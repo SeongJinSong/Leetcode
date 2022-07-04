@@ -5,12 +5,6 @@ import java.util.HashSet;
 import java.util.Map;
 
 public class LongestSubstringWithoutRepeatingCharacters {
-    public static void main(String[] args) {
-        LongestSubstringWithoutRepeatingCharacters test = new LongestSubstringWithoutRepeatingCharacters();
-        int abcabcbb = test.lengthOfLongestSubstring("abcabcbb");
-        System.out.println(abcabcbb);
-
-    }
     public int lengthOfLongestSubstring(String s){
         int max = 0;
         if(s.length()==1) return 1;

@@ -8,11 +8,11 @@ class LongestSubstringWithoutRepeatingCharactersTest {
     @Test
     void lengthOfLongestSubstring(){
         LongestSubstringWithoutRepeatingCharacters obj = new LongestSubstringWithoutRepeatingCharacters();
-        assertEquals(obj.lengthOfLongestSubstring("abcabcbb"), 3);
-        assertEquals(obj.lengthOfLongestSubstring("bbbb"), 1);
-        assertEquals(obj.lengthOfLongestSubstring("pwwkew"), 3);
-        assertEquals(obj.lengthOfLongestSubstring(" "), 1);
-        assertEquals(obj.lengthOfLongestSubstring("au"), 2);
-        assertEquals(obj.lengthOfLongestSubstring("jbpnbwwd"), 4);
+        assertEquals(3, obj.lengthOfLongestSubstring("abcabcbb"));
+        assertEquals(1, obj.lengthOfLongestSubstring("bbbb"));
+        assertEquals(3, obj.lengthOfLongestSubstring("pwwkew"));
+        assertEquals(1, obj.lengthOfLongestSubstring(" "));
+        assertEquals(2, obj.lengthOfLongestSubstring("au"));
+        assertEquals(4, obj.lengthOfLongestSubstring("jbpnbwwd"));
     }
 }
