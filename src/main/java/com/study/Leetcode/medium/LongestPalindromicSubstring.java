@@ -36,6 +36,11 @@ public class LongestPalindromicSubstring {
                     d[i][j]=1;
                     continue;
                 }
+                if (j - i == 2 && s.charAt(i) == s.charAt(j) && s.charAt(i) == s.charAt(i + 1)) {
+                    d[i][j]=1;
+                    l=i; r=j+1;
+                    continue;
+                }
                 if(i>1&&j<s.length()-2&&d[i][j]==1&&s.charAt(i-1)==s.charAt(j+1)){
                     d[i-1][j+1]=1;
                     if (r - l < (j + 1) - (i - 1)) {

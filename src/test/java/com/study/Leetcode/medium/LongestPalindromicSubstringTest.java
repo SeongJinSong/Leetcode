@@ -14,5 +14,6 @@ class LongestPalindromicSubstringTest {
         assertEquals("a", obj.longestPalindrome2("a"));
         assertEquals("bb", obj.longestPalindrome2("bb"));
         assertEquals("ccc", obj.longestPalindrome2("ccc"));
+        assertEquals("bb", obj.longestPalindrome2("abb"));
     }
 }
