@@ -1,11 +1,13 @@
-package com.study.inflearn.two_pointers_sliding_window;
+package com.study.inflearn.two_pointers;
+
+import com.study.inflearn.P;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class TwoPointerAlgorithm {
+public class AddTwoArrayAcending {
     public static void main(String[] args) {
-        TwoPointerAlgorithm T = new TwoPointerAlgorithm();
+        AddTwoArrayAcending T = new AddTwoArrayAcending();
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
         int[] a = new int[n];
@@ -17,7 +19,7 @@ public class TwoPointerAlgorithm {
         for (int i = 0; i < m; i++) {
             b[i] = sc.nextInt();
         }
-        T.print(T.solution(n, m, a, b));
+        P.print(T.solution(n, m, a, b));
     }
 
     public ArrayList<Integer> solution(int n, int m, int[] a, int[] b) {
@@ -46,10 +48,5 @@ public class TwoPointerAlgorithm {
         while(p2<m) ans.add(b[p2++]);
 
         return ans;
-    }
-    public void print(ArrayList<Integer> arr){
-        for (Integer i : arr) {
-            System.out.print(i+" ");
-        }
     }
 }
