@@ -6,6 +6,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class AddTwoArrayAcending {
+    //3
+    //1 3 5
+    //5
+    //2 3 6 7 9
     public static void main(String[] args) {
         AddTwoArrayAcending T = new AddTwoArrayAcending();
         Scanner sc = new Scanner(System.in);

@@ -8,6 +8,10 @@ import java.util.Collections;
 import java.util.Scanner;
 
 public class ExtractCommonInTwoArray {
+    //5
+    //1 3 9 5 2
+    //5
+    //3 2 5 7 8
     public static void main(String[] args) {
         ExtractCommonInTwoArray T = new ExtractCommonInTwoArray();
         Scanner sc = new Scanner(System.in);
