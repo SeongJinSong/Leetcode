@@ -4,7 +4,7 @@ public class LongestPalindromicSubstring {
     /**
      * Approach 2: Brute Force
      * time complexity is O(n^3).
-     * Space complexity : O(1)O.
+     * Space complexity : O(1).
      */
     public String longestPalindrome(String s) {
         String result = "";
@@ -26,46 +26,67 @@ public class LongestPalindromicSubstring {
         }
         return true;
     }
-    public String longestPalindrome2(String s) {
-        if(s.length()==1)return s;
-        int l=0 ,r = 0;
-        int[][] d = new int[s.length()][s.length()];
-        for(int i=0;i<s.length();i++){
-            for(int j=i;j<s.length();j++){
-                if(i==j){
-                    d[i][j]=1;
-                    continue;
-                }
-                if (j - i == 2 && s.charAt(i) == s.charAt(j) && s.charAt(i) == s.charAt(i + 1)) {
-                    d[i][j]=1;
-                    l=i; r=j+1;
-                    continue;
-                }
-                if(i>1&&j<s.length()-2&&d[i][j]==1&&s.charAt(i-1)==s.charAt(j+1)){
-                    d[i-1][j+1]=1;
-                    if (r - l < (j + 1) - (i - 1)) {
-                        l = i-1; r = j+1;
-                    }
-                    continue;
-                }
+    public String longestPalindrome3(String s) {
+        String result = "" + s.charAt(0);
+        for (int startIdx = 0; startIdx < s.length(); startIdx++) {
+            String temp = "" + s.charAt(startIdx);
+            if (result.length() < temp.length()) {
+                result = temp;
+            }
 
-                if(i+1==j&&s.charAt(i)==s.charAt(j)){
-                    d[i][j]=1;
-                    if (r - l < 1) {
-                        l = i; r = j+1;
-                    }
-                    continue;
-                }
+            int i = startIdx-1; int j = startIdx + 1;
+            while (i >= 0 && j < s.length() && s.charAt(i) == s.charAt(j)) {
+                temp = s.charAt(i) + temp + s.charAt(j);
+                i--;
+                j++;
+            }
 
-                String str = s.substring(i, j);
-                if (isPalindromic(str)) {
-                    d[i][j]=1;
-                    if (r - l < j - i) {
-                        l = i; r = j;
-                    }
-                }
+            if (temp.length() > result.length()) {
+                result = temp;
             }
         }
-        return s.substring(l, r);
+        for (int startIdx = 0; startIdx < s.length() - 1; startIdx++) {
+            String temp = "" + s.charAt(startIdx) + s.charAt(startIdx + 1);
+
+            if (isPalindromic(temp)) {
+                if (result.length() < temp.length()) {
+                    result = temp;
+                }
+            }
+
+            int i = startIdx - 1; int j = startIdx + 1 + 1;
+            while (i >= 0 && j < s.length() && s.charAt(i) == s.charAt(j)) {
+                temp = s.charAt(i) + temp + s.charAt(j);
+                i--;
+                j++;
+            }
+            if(isPalindromic(temp)) {
+                if(result.length() < temp.length()) result = temp;
+            }
+        }
+        return result;
+    }
+    public String longestPalindrome4(String s) {
+        if (s == null || s.length() < 1) return "";
+        int start = 0, end = 0;
+        for (int i = 0; i < s.length(); i++) {
+            int len1 = expandAroundCenter(s, i, i);
+            int len2 = expandAroundCenter(s, i, i + 1);
+            int len = Math.max(len1, len2);
+            if (len > end - start) {
+                start = i - (len - 1) / 2;
+                end = i + len / 2;
+            }
+        }
+        return s.substring(start, end + 1);
+    }
+
+    private int expandAroundCenter(String s, int left, int right) {
+        int L = left, R = right;
+        while (L >= 0 && R < s.length() && s.charAt(L) == s.charAt(R)) {
+            L--;
+            R++;
+        }
+        return R - L - 1;
     }
 }
