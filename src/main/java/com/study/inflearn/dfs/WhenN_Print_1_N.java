@@ -14,7 +14,8 @@ public class WhenN_Print_1_N {
 
     private int[] solution(int n) {
         int[] a = new int[n];
-        dfs(1, a);
+//        dfs(1, a);
+        dfs2(n, a);
         return a;
     }
 
@@ -24,5 +25,10 @@ public class WhenN_Print_1_N {
         }
         a[depth-1]=depth;
         dfs(depth+1, a);
+    }
+    private void dfs2(int n, int[] a) {
+        if (n==0) return;
+        dfs2(n-1, a);
+        System.out.print(n+" ");
     }
 }
