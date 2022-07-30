@@ -1,6 +1,7 @@
 package com.study.inflearn.greedy;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Scanner;
 
@@ -22,6 +23,7 @@ public class DijkstraAlgorithm {
         n = sc.nextInt();
         m = sc.nextInt();
         dist = new int[n + 1];
+        Arrays.fill(dist, Integer.MAX_VALUE);
         check = new HashSet<>();
 
         for (int i = 0; i <= n+1; i++) {
@@ -34,9 +36,10 @@ public class DijkstraAlgorithm {
             nodes.get(start).add(new Edge(start, end, weight));
         }
         DijkstraAlgorithm T = new DijkstraAlgorithm();
+        dist[1]=0;
         T.dfs(0, 1);
         for (int i = 2; i < n + 1; i++) {
-            System.out.println(i+" : "+(dist[i]!=0?dist[i]:"impossible"));
+            System.out.println(i+" : "+(dist[i]!=Integer.MAX_VALUE?dist[i]:"impossible"));
         }
     }
 
@@ -46,7 +49,7 @@ public class DijkstraAlgorithm {
         for (Edge e : edges) {
             if(check.contains(depth+" "+e.start+" "+e.end))continue;
             check.add(depth+" "+e.start + " " + e.end);
-            if(e.end!=1&&dist[e.end]==0) dist[e.end] = dist[e.start] + e.weight;
+            if(dist[e.end]==Integer.MAX_VALUE) dist[e.end] = dist[e.start] + e.weight;
             else dist[e.end]=Math.min(dist[e.end], dist[e.start] + e.weight);
             dfs(depth+1, e.end);
         }
