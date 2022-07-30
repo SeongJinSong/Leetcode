@@ -1,30 +1,34 @@
 package com.study.inflearn.greedy;
 
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class WeddingCeremony {
+    static class Node{
+        int time, type;
+        public Node(int time, int type){
+            this.time=time;
+            this.type=type;
+        }
+    }
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
-        int[][] a = new int[n][2];
+        ArrayList<Node> a = new ArrayList<>();
         for (int i = 0; i < n; i++) {
-            a[i][0] = sc.nextInt();
-            a[i][1] = sc.nextInt();
+            a.add(new Node(sc.nextInt(), 0));
+            a.add(new Node(sc.nextInt(), 1));
         }
-        Arrays.sort(a, (x, y)->{
-            if(x[1]==y[1]) return x[0] - y[0];
-            return x[1] - y[1];
+        a.sort((x, y) -> {
+            if (x.time == y.time) return y.type - x.type;
+            return x.time - y.time;
         });
-        for(int i=0;i<n;i++) System.out.println(a[i][0]+" "+a[i][1]);
-        int max = Integer.MIN_VALUE;
         int cnt = 0;
         int ans = 0;
-        for (int i = 0; i < n; i++) {
-            if (max <= a[i][0]) {
-                max = a[i][1];
-                cnt = 1;
-            } else {
+        for (int i = 0; i < 2*n; i++) {
+            if(a.get(i).type==1)cnt--;
+            if (a.get(i).type == 0) {
                 ans = Math.max(ans, ++cnt);
             }
         }
