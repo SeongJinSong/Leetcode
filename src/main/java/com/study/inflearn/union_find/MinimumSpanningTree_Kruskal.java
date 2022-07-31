@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Scanner;
 
-public class MinimumSpanningTree {
+public class MinimumSpanningTree_Kruskal {
     static class Edge{
         int start, end, weight;
         public Edge(int start, int end, int weight) {
@@ -25,6 +25,7 @@ public class MinimumSpanningTree {
         int v2 = find(to);
         if(v1!=v2){
             unf[v1]=v2;
+            System.out.println(weight);
             ans+=weight;
         }
     }
@@ -37,7 +38,7 @@ public class MinimumSpanningTree {
         }
         int m = sc.nextInt();
         ArrayList<Edge> edges = new ArrayList<>();
-        MinimumSpanningTree T = new MinimumSpanningTree();
+        MinimumSpanningTree_Kruskal T = new MinimumSpanningTree_Kruskal();
         for (int i = 0; i < m; i++) {
             edges.add(new Edge(sc.nextInt(), sc.nextInt(), sc.nextInt()));
         }
