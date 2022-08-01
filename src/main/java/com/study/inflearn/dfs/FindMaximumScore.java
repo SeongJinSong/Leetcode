@@ -2,7 +2,7 @@ package com.study.inflearn.dfs;
 
 import java.util.Scanner;
 
-public class GetTheMaximumScore {
+public class FindMaximumScore {
     static int n;
     static int m;
     static int[][]a;
@@ -16,7 +16,7 @@ public class GetTheMaximumScore {
             a[i][0] = sc.nextInt();
             a[i][1] = sc.nextInt();
         }
-        GetTheMaximumScore T = new GetTheMaximumScore();
+        FindMaximumScore T = new FindMaximumScore();
         T.dfs(0, 0, 0);
         System.out.println(max);
     }
@@ -24,7 +24,7 @@ public class GetTheMaximumScore {
     private void dfs(int depth, int sum, int time) {
         if(time>m) return;
         if(depth==n){
-            max = Math.max(sum, GetTheMaximumScore.max);
+            max = Math.max(sum, FindMaximumScore.max);
             return;
         }
         dfs(depth + 1, sum + a[depth][0], time + a[depth][1]);
