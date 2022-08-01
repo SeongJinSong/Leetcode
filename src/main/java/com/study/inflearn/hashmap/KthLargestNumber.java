@@ -20,14 +20,14 @@ public class KthLargestNumber {
         }
         KthLargestNumber T = new KthLargestNumber();
         T.dfs(0, 0, 0);
-        System.out.println();
-        if(ts.size()<k) System.out.println(-1);
-        //treeSet 은 정렬을 하고, red black tree 로 내부적으로 구성을 한다.
-        //pollFirst 하면 이진수를 밸런스 트리로 만드는 작용을 하기 때문에 성능에 불리하다.
-        for (int i = 0; i < k - 1; i++) {
-            ts.pollFirst();
+        int cnt = 1;
+        for (int i : ts){
+            if(cnt++==k){
+                System.out.println(i);
+                return;
+            }
         }
-        System.out.println(ts.first());
+        System.out.println(-1);
     }
 
     private void dfs(int depth, int start, int sum) {
