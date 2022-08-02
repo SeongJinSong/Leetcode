@@ -13,14 +13,12 @@ public class SavePrincess {
         for (int i = 1; i <= n; i++) {
             q.add(i);
         }
-        int cnt = 1;
-        while (q.size()!=1) {
-            int len = q.size();
-            for (int i = 0; i < len; i++) {
-                if (cnt++ % k == 0)  q.poll();
-                else q.add(q.poll());
-            }
+        int ans = 0;
+        while(!q.isEmpty()){
+            for (int i = 1; i < k; i++) q.add(q.poll());
+            q.poll();
+            if(q.size()==1) ans = q.poll();
         }
-        System.out.println(q.peek());
+        System.out.println(ans);
     }
 }
