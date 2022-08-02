@@ -23,6 +23,7 @@ public class CurriculumDesign {
                 }
             }
         }
+        if(!q.isEmpty()) correct = false;
         System.out.println(correct?"YES":"NO");
     }
 }
