@@ -30,16 +30,11 @@ public class IronStick {
         Stack<Character> stk = new Stack<>();
         int ans = 0;
         for (int i=0;i<s.length();i++) {
-            if (s.charAt(i) == '(' && i < s.length() - 1 && s.charAt(i + 1) == ')') {
-                ans += stk.size();
-                i++;
-            }
-            else if (s.charAt(i) == '(' && i < s.length() - 1 && s.charAt(i + 1) != ')') {
-                stk.push(s.charAt(i));
-            }
+            if (s.charAt(i) == '(') stk.push('(');
             else {
                 stk.pop();
-                ans += 1;
+                if(s.charAt(i-1)=='(')ans+=stk.size();
+                else ans++;
             }
         }
         return ans;
