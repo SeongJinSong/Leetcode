@@ -15,15 +15,10 @@ public class SavePrincess {
         }
         int cnt = 1;
         while (q.size()!=1) {
-            Queue<Integer> temp = new LinkedList<>();
             int len = q.size();
             for (int i = 0; i < len; i++) {
                 if (cnt++ % k == 0)  q.poll();
-                else temp.add(q.poll());
-            }
-            int len2 = temp.size();
-            for (int i = 0; i < len2; i++) {
-                q.add(temp.poll());
+                else q.add(q.poll());
             }
         }
         System.out.println(q.peek());
