@@ -1,4 +1,4 @@
-package com.study.inflearn.sorting_and_searching;
+package com.study.inflearn.sorting;
 
 import com.study.inflearn.P;
 
