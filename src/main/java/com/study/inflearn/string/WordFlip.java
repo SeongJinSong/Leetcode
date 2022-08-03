@@ -15,5 +15,19 @@ public class WordFlip {
             StringBuilder sb = new StringBuilder(s).reverse();
             System.out.println(sb);
         }
+        System.out.println("-----------");
+        for (String s : sarr) {
+            char[] carr = s.toCharArray();
+            int lt=0, rt=s.length()-1;
+            while (lt < rt) {
+                char tmp = carr[lt];
+                carr[lt] = carr[rt];
+                carr[rt] = tmp;
+                lt++;
+                rt--;
+            }
+            System.out.println(String.valueOf(carr));
+        }
+
     }
 }
