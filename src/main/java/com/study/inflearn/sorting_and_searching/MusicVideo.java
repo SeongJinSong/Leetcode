@@ -8,29 +8,27 @@ public class MusicVideo {
         int n = sc.nextInt();
         int m = sc.nextInt();
         int[] a = new int[n];
-        int lt, rt = 0;
+        int lt = 0, rt = 0;
         for (int i = 0; i < n; i++) {
             a[i] = sc.nextInt();
             rt+=a[i];
+            if(lt<a[i]) lt = a[i];
         }
-        lt = a[n - 1];
         int ans = 0;
         while (lt <= rt) {
             int mid = (lt+rt)/2;
-            int res = checkDvd(a, mid);
+            int res = checkDvdCount(a, mid);
             System.out.println("mid:"+mid+" res:"+res);
-            if(res<m)rt=mid-1;
-            else if(res>m)lt=mid+1;
-            else{
+            if(res<=m){
                 ans=mid;
                 rt=mid-1;
-                lt=mid+1;
             }
+            else lt=mid+1;
         }
         System.out.println(ans);
     }
 
-    private static int checkDvd(int[] a, int mid) {
+    private static int checkDvdCount(int[] a, int mid) {
         int res = 1;
         int sum = 0;
         for (int i : a) {
