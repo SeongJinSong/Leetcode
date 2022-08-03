@@ -16,5 +16,13 @@ public class RemoveDuplicateCharacters {
             }
         }
         System.out.println(sb);
+        System.out.println("-----------------");
+        StringBuilder sb2 = new StringBuilder();
+        for (int i = 0; i < s.length(); i++) {
+            if (i == s.indexOf(s.charAt(i))) {
+                sb2.append(s.charAt(i));
+            }
+        }
+        System.out.println(sb2);
     }
 }
