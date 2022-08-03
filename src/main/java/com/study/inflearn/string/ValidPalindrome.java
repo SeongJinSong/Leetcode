@@ -24,5 +24,9 @@ public class ValidPalindrome {
             if(!isAlphabetic(s.charAt(rt)))rt--;
         }
         System.out.println(ans?"YES":"NO");
+        System.out.println("---------------");
+        String s1 = s.replaceAll("[^a-zA-Z]", "");
+        StringBuilder sb = new StringBuilder(s1).reverse();
+        System.out.println(s1.equals(sb.toString())?"YES":"NO");
     }
 }
