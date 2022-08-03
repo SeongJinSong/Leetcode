@@ -21,5 +21,28 @@ public class ReverseSpecificCharacter {
             }
         }
         System.out.println(String.valueOf(carr));
+        System.out.println("----------");
+        char[] ca = s.toCharArray();
+        int lt=0, rt=ca.length-1;
+        while (lt < rt) {
+            if (isAlphabet(ca[lt])&&isAlphabet(ca[rt])) {
+                char tmp = ca[lt];
+                ca[lt] = ca[rt];
+                ca[rt] = tmp;
+                lt++;
+                rt--;
+            }
+            if (!isAlphabet(ca[lt])) {
+                lt++;
+            }
+            if (!isAlphabet(ca[rt])) {
+                rt--;
+            }
+        }
+        System.out.println(String.valueOf(ca));
+    }
+
+    private static boolean isAlphabet(char c) {
+        return Character.isLowerCase(c) || Character.isUpperCase(c);
     }
 }
